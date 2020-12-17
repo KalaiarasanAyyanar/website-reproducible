@@ -12,7 +12,7 @@ const cleanCSS = new CleanCSS();
 
 const defaultOptions = {
   disableAutoprefixing: false,
-  disableMinification: false
+  disableMinification: false,
 };
 
 export const wrapRootElement = withRoot;
@@ -25,19 +25,20 @@ export const onRenderBody = (
   if (sheets) {
     const { disableAutoprefixing, disableMinification } = {
       ...defaultOptions,
-      ...pluginOptions
+      ...pluginOptions,
     };
     let css = sheets.toString();
     css = disableAutoprefixing
       ? css
       : prefixer.process(css, { from: undefined }).css;
     css = disableMinification ? css : cleanCSS.minify(css).styles;
+
     setHeadComponents([
       <style
         id="jss-server-side"
         key="jss-server-side"
         dangerouslySetInnerHTML={{ __html: css }}
-      />
+      />,
     ]);
 
     globalLeak.delete(pathname);

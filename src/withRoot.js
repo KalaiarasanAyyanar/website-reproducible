@@ -1,9 +1,9 @@
-import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import JssProvider from 'react-jss/lib/JssProvider';
-import getPageContext from './getPageContext';
-import root from 'window-or-global';
+import React from "react";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import JssProvider from "react-jss/lib/JssProvider";
+import getPageContext from "./getPageContext";
+import root from "window-or-global";
 
 function withRoot(Component) {
   class WithRoot extends React.Component {
@@ -27,7 +27,6 @@ function withRoot(Component) {
             theme={this.muiPageContext.theme}
             sheetsManager={this.muiPageContext.sheetsManager}
           >
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
             <Component {...this.props} />
           </MuiThemeProvider>
